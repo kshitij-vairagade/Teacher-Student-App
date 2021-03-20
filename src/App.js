@@ -37,8 +37,10 @@ import Info from "./components/info";
 import Form from "./components/form";
 import Weather from "./components/weather";
 import Login from "./components/Login/Login";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AuthProvider } from "./Authentication";
 class App extends React.Component {
+
   state = {
     temp: "",
     city: "",
@@ -98,6 +100,14 @@ class App extends React.Component {
       <div className="wrapper">
         <div className="main">
           <div className="container">
+            <Login />
+            {/* <AuthProvider>
+            <Router>
+              <div>
+            <Route exact path="/login" component={Login} />
+            </div>
+            </Router>
+            </AuthProvider> */}
             <div className="row">
               <div className="col-sm-5 info">
                 <Info />
@@ -115,13 +125,6 @@ class App extends React.Component {
                 />
               </div>
             </div>
-            <BrowserRouter>
-              <Switch>
-                <Route exact path="/login">
-                  <Login />
-                </Route>
-              </Switch>
-            </BrowserRouter>
           </div>
         </div>
       </div>
